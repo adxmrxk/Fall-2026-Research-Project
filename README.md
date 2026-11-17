@@ -90,3 +90,4 @@ Each experiment will run on the same 150 scans, split into the same three parts.
 - `seed44_prompt_strategy_test/sample_seed44_n150.txt`: the 150 scans used in every run.
 - `pilot/pilot_confidence.py`: the setup code (model loading, data loading, Dice) that `runner.py` reuses.
 - `background-papers/`: reading notes on the papers behind the project.
+- `results/`: the output PDFs from the experiment runs on the 150 scans. Each run has its own subfolder, for example `baseline_every_slice/` for the every-slice baseline and `every_10/` for the every-10 run. Other runs get their own subfolders as they are added. Each subfolder holds per-slice run files and summary files with one row per scan. Every-10 part 3 will be added when it finishes.
