@@ -1,6 +1,6 @@
 # Fall 2026 Research: Box-Prompt Strategies for SAM 2 Pancreas Segmentation
 
-# 2026-11-17
+# Last Updated 2026-11-17
 
 ## Introduction
 
@@ -80,9 +80,6 @@ Each experiment will run on the same 150 scans, split into the same three parts.
 | 0.85      | high variation                        | planned |
 | 0.9       | most re-prompts                       | planned |
 
-## Question for the professor
-
-- Just to confirm, we will use the same 150 scans as the interval runs for the confidence threshhold run?
 
 ## Repository layout
 
