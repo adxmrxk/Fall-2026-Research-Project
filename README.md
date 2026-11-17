@@ -1,5 +1,7 @@
 # Fall 2026 Research: Box-Prompt Strategies for SAM 2 Pancreas Segmentation
 
+# 2026-11-17
+
 ## Introduction
 
 This project looks at how much manual input SAM 2 needs to segment the pancreas in 3D CT scans. SAM 2 is a promptable segmentation model: you give it a bounding box, and it outlines the object in that frame. For a 3D volume, the question is how many boxes you have to draw and where to place them.
