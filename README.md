@@ -35,24 +35,23 @@ The runner is `seed44_prompt_strategy_test/runner.py`.
 
 ### Baseline (150 scans, complete)
 
-| Part    | Scans   | Avg Dice       | Avg boxes per scan |
-| ------- | ------- | -------------- | ------------------ |
-| 1       | 50      | 0.768          | 31.3               |
-| 2       | 50      | 0.758          | about 33           |
-| 3       | 50      | 0.737          | 31.1               |
-| **All** | **150** | **about 0.75** | **about 32**       |
+| Part    | Scans   | Avg Dice   | Avg boxes per scan |
+| ------- | ------- | ---------- | ------------------ |
+| 1       | 50      | 0.7675     | 31.28              |
+| 2       | 50      | 0.7578     | 33.46              |
+| 3       | 50      | 0.7370     | 31.14              |
+| **All** | **150** | **0.7541** | **31.96**          |
 
-### Every 10 (work in progress, about 66% complete)
+### Every 10 (150 scans, complete)
 
-Parts 1 and 2 are done (100 of 150 scans). Part 3 is still to run.
+| Part    | Scans   | Avg Dice   | Avg boxes per scan |
+| ------- | ------- | ---------- | ------------------ |
+| 1       | 50      | 0.6714     | 3.04               |
+| 2       | 50      | 0.6413     | 3.32               |
+| 3       | 50      | 0.6118     | 2.98               |
+| **All** | **150** | **0.6415** | **3.11**           |
 
-| Part | Scans | Avg Dice | Avg boxes per scan |
-| ---- | ----- | -------- | ------------------ |
-| 1    | 50    | 0.671    | 3.0                |
-| 2    | 50    | 0.641    | 3.3                |
-| 3    | 50    | pending  | pending            |
-
-Compared with the baseline on the same scans, every-10 uses about a tenth of the boxes but loses roughly 0.10 Dice.
+Compared with the baseline on the same 150 scans, every-10 uses about a tenth of the boxes (3.11 vs 31.96) but loses about 0.11 Dice (0.754 vs 0.642).
 
 **What the detail shows:** Most of the loss comes from stretches of slices where the mask collapses after a box is placed. In several scans, the slices right after a re-prompt drop to near zero Dice, even when the box itself looks correct. Examples are `pancreas_186` (slices 14–19) and `pancreas_265` (slices 38–46). This is the main thing to investigate next.
 
@@ -90,4 +89,4 @@ Each experiment will run on the same 150 scans, split into the same three parts.
 - `seed44_prompt_strategy_test/sample_seed44_n150.txt`: the 150 scans used in every run.
 - `pilot/pilot_confidence.py`: the setup code (model loading, data loading, Dice) that `runner.py` reuses.
 - `background-papers/`: reading notes on the papers behind the project.
-- `results/`: the output PDFs from the experiment runs, with one subfolder per run (for example `baseline_every_slice/` and `every_10/`). Each subfolder has per-slice run files and per-scan summary files.
+- `results/`: the output CSVs from the experiment runs, with one subfolder per run (for example `baseline_every_slice/` and `every_10/`). Each subfolder has per-slice run files (`every_slice_*` / `every_10_slices_*`) and per-scan summary files (`summary_*`).
