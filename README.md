@@ -51,7 +51,7 @@ The runner is `seed44_prompt_strategy_test/runner.py`.
 | 3       | 50      | 0.6118     | 2.98               |
 | **All** | **150** | **0.6415** | **3.11**           |
 
-Compared with the baseline on the same 150 scans, every-10 uses about a tenth of the boxes (3.11 vs 31.96) but loses about 0.11 Dice (0.754 vs 0.642).
+Compared with the baseline on the same 150 scans, every-10 uses 3.11 boxes per scan versus 31.96 for the baseline, and loses 0.11 Dice (0.7541 vs 0.6415).
 
 **What the detail shows:** Most of the loss comes from stretches of slices where the mask collapses after a box is placed. In several scans, the slices right after a re-prompt drop to near zero Dice, even when the box itself looks correct. Examples are `pancreas_186` (slices 14–19) and `pancreas_265` (slices 38–46). This is the main thing to investigate next.
 
