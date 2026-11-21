@@ -1,6 +1,6 @@
 # Fall 2026 Research: Box-Prompt Strategies for SAM 2 Pancreas Segmentation
 
-# Last Updated 2026-11-17
+# Last Updated 2026-11-20 @ 10:20 PM
 
 ## Introduction
 
