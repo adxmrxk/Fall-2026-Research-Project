@@ -28,7 +28,8 @@ SAM 2 video predictor (`sam2.1_hiera_small`) with box prompts. Scoring follows t
 
 1. **Baseline: box on every pancreas slice.** Each slice is segmented from its own box. This is the upper bound on prompt effort.
 2. **Every 10: re-prompt every 10th pancreas slice.** One box is placed on the largest pancreas slice. The mask is propagated forward and backward. A new box is placed every 10th pancreas slice, and the propagation restarts from there.
-3. **Every 20: re-prompt every 20th pancreas slice.** The same method as Every 10, with a new box every 20th pancreas slice.
+3. **Every 5: re-prompt every 5th pancreas slice.** The same method as Every 10, with a new box every 5th pancreas slice.
+4. **Every 20: re-prompt every 20th pancreas slice.** The same method as Every 10, with a new box every 20th pancreas slice.
 
 The runner is `seed44_prompt_strategy_test/runner.py`.
 
@@ -56,6 +57,17 @@ Compared with the baseline on the same 150 scans, every-10 uses 3.11 boxes per s
 
 **What the detail shows:** Most of the loss comes from stretches of slices where the mask collapses after a box is placed. In several scans, the slices right after a re-prompt drop to near zero Dice, even when the box itself looks correct. Examples are `pancreas_186` (slices 14–19) and `pancreas_265` (slices 38–46). This is the main thing to investigate next.
 
+### Every 5 (150 scans, complete)
+
+| Part    | Scans   | Avg Dice   | Avg boxes per scan |
+| ------- | ------- | ---------- | ------------------ |
+| 1       | 50      | 0.7296     | 6.30               |
+| 2       | 50      | 0.6882     | 6.70               |
+| 3       | 50      | 0.6776     | 6.16               |
+| **All** | **150** | **0.6985** | **6.39**           |
+
+Compared with the baseline on the same 150 scans, every-5 uses 6.39 boxes per scan versus 31.96 for the baseline and 3.11 for every-10. It loses 0.0556 Dice (0.7541 vs 0.6985), which is less than the 0.1126 lost by every-10 (0.7541 vs 0.6415).
+
 ### Every 20 (150 scans, complete)
 
 | Part    | Scans   | Avg Dice   | Avg boxes per scan |
@@ -75,7 +87,7 @@ Each experiment will run on the same 150 scans, split into the same three parts.
 
 | Interval | Re-prompt every     | Status  |
 | -------- | ------------------- | ------- |
-| Every 5  | 5th pancreas slice  | planned |
+| Every 5  | 5th pancreas slice  | complete |
 | Every 15 | 15th pancreas slice | planned |
 | Every 20 | 20th pancreas slice | complete |
 
